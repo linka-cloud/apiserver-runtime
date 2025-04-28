@@ -46,7 +46,7 @@ type Server struct {
 
 // Build returns a Command used to run the apiserver
 func (a *Server) Build() (*Command, error) {
-	a.schemes = append(a.schemes, apiserver.Scheme)
+	a.schemes = append(a.schemes, apiserver.Scheme, apiserver.ParameterScheme)
 	a.schemeBuilder.Register(
 		func(scheme *runtime.Scheme) error {
 			groupVersions := make(map[string]sets.Set[string])
